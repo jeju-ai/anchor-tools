@@ -25,11 +25,11 @@
 | 채널 | 설명 | 대상 |
 |------|------|------|
 | `#anchor-operations` | 운영지원본부 업무 공유 | 운영지원본부 |
-| `#anchor-div1-core` | 핵심인재양성본부 (AI 융합전공, 트랙 운영) | 1-1본부 |
-| `#anchor-div2-overseas` | 해외인재본부 (Study Jeju, 국제협력) | 1-2본부 |
-| `#anchor-div3-learn` | 런케이션본부 (Flagship, Scale-up) | 2-1본부 |
-| `#anchor-div4-rnd` | 연구개발본부 (과제, 논문, 특허) | 2-2본부 |
-| `#anchor-div5-elc` | 지역상생본부 (창업, 평생교육, 늘봄) | 2-3본부 |
+| `#anchor-div1-core` | AI 인재양성본부 — 조인범 (융합전공, 마이크로디그리) | 1-1본부 |
+| `#anchor-div2-overseas` | 해외인재본부 — 신희경 (Study Jeju, 국제협력) | 1-2본부 |
+| `#anchor-div3-learn` | 런케이션본부 — 정아영 (Flagship, Scale-up) | 2-1본부 |
+| `#anchor-div4-rnd` | 연구개발(R&D)본부 — 장용준 (전략산업 R&D, Co-Lab) | 2-2본부 |
+| `#anchor-div5-elc` | 지역상생본부 — 김휴찬 (창업, 평생교육, 사회혁신, 늘봄) | 3~5본부 |
 
 ### 위원회 (Committees)
 
