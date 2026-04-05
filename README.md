@@ -32,6 +32,9 @@ Claude Code에서 `/anchor-*` 명령으로 호출하는 전용 스킬 모음.
 | `anchor-kpi` | 성과지표 수집 및 대시보드 HTML 생성 |
 | `anchor-translate` | 한영 번역 (RISE 용어 일관성 유지) |
 | `anchor-onboarding` | 신규 직원 환경 셋업 안내 |
+| `anchor-hwp` | HWP/HWPX 공문서 읽기·생성·변환 (hwp-toolkit 래퍼) |
+| `anchor-slides` | 발표자료 생성 (visual-explainer, Canva MCP, Google Slides 3경로) |
+| `anchor-notebook` | 문서 기반 AI 요약·Q&A — NotebookLM 대안 |
 
 ### 2. Claude 데스크톱 프로젝트 (`projects/`)
 
@@ -45,6 +48,8 @@ Claude.ai 데스크톱 앱의 "Projects" 탭에 등록할 시스템 프롬프트
 | `anchor-minutes-organizer` | 회의록 정리 |
 | `anchor-kpi-helper` | KPI 현황 정리 및 보고 |
 | `anchor-translator` | 한영·영한 번역 |
+| `anchor-slides-designer` | 발표자료 기획·초안 작성 (앵커 브랜드 적용) |
+| `anchor-document-analyzer` | 다중 문서 종합 분석·요약·Q&A (NotebookLM 대안) |
 
 ### 3. 공유 룰북 (`rulebook/`)
 
