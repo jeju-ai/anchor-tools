@@ -43,7 +43,7 @@ Claude.ai 계정 연결 (학교 이메일 또는 개인 계정):
 ## 4단계: anchor-tools 설치
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/entelecheia/anchor-tools/main/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/jeju-ai/anchor-tools/main/install.sh | bash
 ```
 
 설치 후 확인:
