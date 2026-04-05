@@ -1,130 +1,118 @@
-# 문서 기반 AI 분석 워크플로 가이드
+# NotebookLM 연동 워크플로 상세
 
-## Claude Desktop Project 설정 방법
+## notebooklm-skill 개요
 
-### 1. 새 프로젝트 생성
+- **출처**: [PleasePrompto/notebooklm-skill](https://github.com/PleasePrompto/notebooklm-skill) (5,500+ stars)
+- **원리**: Patchright(Playwright 기반) 브라우저 자동화로 NotebookLM 웹 UI에 접근
+- **인증**: Google 계정 쿠키 영구 저장 → 최초 1회만 수동 로그인
 
-```
-Claude Desktop 앱 → 좌측 사이드바 → Projects → + New Project
-→ 프로젝트 이름 입력 (예: "앵커 2차년도 계획 분석")
-→ Create
-```
+## 설치 절차
 
-### 2. System Prompt 설정
+### 1. 스킬 설치
 
-Projects → 프로젝트 선택 → Edit Project → Instructions에 아래 입력:
+```bash
+# 방법 A: claude skill install (권장)
+claude skill install PleasePrompto/notebooklm-skill
 
-```
-당신은 앵커(RISE) 사업단 문서 분석 전문가입니다.
-등록된 문서들을 바탕으로 정확한 답변을 제공합니다.
-답변은 항상 출처 문서명을 명시하고, 문서에 없는 내용은 추정임을 표시합니다.
-요약은 개조식(명사형 종결)으로 작성합니다.
+# 방법 B: 수동 clone
+cd ~/.claude/skills
+git clone https://github.com/PleasePrompto/notebooklm-skill.git notebooklm
 ```
 
-### 3. Knowledge 등록
+### 2. 최초 인증
 
-```
-프로젝트 → Add to Project → Upload files
-또는
-텍스트 복사 → Add to Project → Paste text
-```
-
----
-
-## 문서 종류별 전처리
-
-| 형식 | 전처리 방법 | 비고 |
-|------|------------|------|
-| HWP/HWPX | `hwp read 파일.hwp --output 파일.md` → MD 파일 업로드 | anchor-hwp 스킬 사용 |
-| PDF | Claude Desktop에 직접 첨부 | 스캔 PDF는 OCR 필요 |
-| Excel/XLSX | CSV로 내보내기 후 업로드 | 복잡한 수식 포함 시 값만 복사 |
-| Word/DOCX | docx 스킬로 MD 변환 후 업로드 | 또는 직접 첨부 |
-| 웹페이지 | URL 붙여넣기 또는 텍스트 복사 | Claude Desktop이 URL 읽기 지원 |
-| 이미지 | 직접 첨부 (PNG, JPG) | OCR 및 내용 분석 가능 |
-
----
-
-## 효과적인 질문 예시
-
-### 종합 분석
-```
-"이 자료들의 공통된 핵심 메시지는 무엇인가요?"
-"등록된 문서 전체를 한 페이지로 요약해주세요."
-"가장 중요한 결정 사항 3가지와 각 근거를 알려주세요."
+```bash
+cd ~/.claude/skills/notebooklm
+python scripts/run.py auth_manager.py setup
 ```
 
-### 비교 분석
-```
-"[1차년도 계획서]와 [2차년도 계획서]의 주요 차이점은?"
-"예산 항목별로 1차와 2차 연도를 비교해주세요."
-"두 제안서 중 어느 것이 우리 기준에 더 부합하나요?"
-```
+- Chromium 브라우저 자동 열림
+- Google 계정으로 수동 로그인
+- 인증 완료 후 브라우저 자동 종료
+- `~/.claude/skills/notebooklm/data/auth_info.json`에 상태 저장
 
-### 주제별 추출
-```
-"전체 자료에서 예산 관련 내용만 모아서 정리해줘."
-"성과지표(KPI)가 언급된 부분만 추출해줘."
-"협약 기관 목록과 각 협약 내용을 정리해줘."
-```
+## 핵심 명령어
 
-### 보고서 변환
-```
-"이 내용을 개조식 보고서로 변환해줘."
-"교육부 제출용 실적 보고 형식으로 재구성해줘."
-"핵심 내용을 FAQ 10개로 만들어줘."
+### 인증
+
+```bash
+python scripts/run.py auth_manager.py status   # 확인
+python scripts/run.py auth_manager.py setup    # 최초 설정
+python scripts/run.py auth_manager.py reauth   # 재인증
 ```
 
----
+### 노트북 관리
 
-## NotebookLM vs Claude Projects 비교
+```bash
+# Smart Add (내용 조회 후 자동 태깅)
+python scripts/run.py ask_question.py \
+  --question "이 노트북의 내용과 주제를 요약해줘" \
+  --notebook-url "URL"
 
-| 기능 | Google NotebookLM | Claude Desktop Projects |
-|------|-------------------|------------------------|
-| 문서 등록 | 최대 50개 소스 | 프로젝트당 제한 있음 |
-| 오디오 요약 | 지원 (팟캐스트) | 향후 지원 예정 (ElevenLabs) |
-| 한국어 지원 | 양호 | 우수 |
-| 개조식 변환 | 미지원 | 지원 |
-| 공문서 형식 | 미지원 | anchor-report 스킬 연동 |
-| HWP 지원 | 미지원 | anchor-hwp 변환 후 지원 |
-| 응답 정확도 | 문서 기반 우수 | 문서 기반 + 추론 우수 |
-| 프라이버시 | Google 서버 처리 | Anthropic 서버 처리 |
-| 협업 공유 | 노트북 공유 가능 | 프로젝트 공유 제한적 |
-| 비용 | 무료 (Google One 연동) | Claude Pro/Team 구독 |
+python scripts/run.py notebook_manager.py add \
+  --url "URL" --name "이름" \
+  --description "설명" --topics "태그1,태그2"
 
-**권장**: 내부 민감 문서는 Claude Projects 사용. 공개 자료 팟캐스트화는 NotebookLM.
-
----
-
-## 향후 오디오 생성 로드맵
-
-### ElevenLabs MCP 연동 계획
-
-```
-Phase 2 활성화 조건:
-1. ElevenLabs API 키 발급
-2. Claude Desktop MCP 설정에 ElevenLabs 서버 추가
-3. anchor-notebook 스킬 업데이트
+# 목록/검색/활성화/삭제
+python scripts/run.py notebook_manager.py list
+python scripts/run.py notebook_manager.py search --query "키워드"
+python scripts/run.py notebook_manager.py activate --id ID
+python scripts/run.py notebook_manager.py remove --id ID
 ```
 
-### 예상 워크플로 (Phase 2)
+### 질문
 
+```bash
+python scripts/run.py ask_question.py --question "질문"
+python scripts/run.py ask_question.py --question "질문" --notebook-id ID
+python scripts/run.py ask_question.py --question "질문" --notebook-url "URL"
 ```
-문서 분석 → Claude 요약 스크립트 생성
-→ ElevenLabs MCP TTS 호출
-→ MP3 오디오 파일 생성
-→ 공유/청취
+
+## NotebookLM Studio 산출물 9종
+
+NotebookLM 웹 UI에서 생성:
+
+| 산출물 | 앵커 활용 |
+|--------|----------|
+| 오디오 요약 | 이동 중 사업 브리핑 |
+| 마인드맵 | 사업 구조 파악 |
+| 보고서 | 위원회 보고 초안 |
+| 퀴즈 | 직원 교육 |
+| 플래시카드 | 용어 학습, 온보딩 |
+| 인포그래픽 | 홍보, 성과 보고 |
+| 슬라이드 덱 | 회의 발표 |
+| 데이터 테이블 | 비교 분석 |
+| 영상 | 대외 홍보 |
+
+## HWP 문서 처리
+
+NotebookLM은 HWP 미지원. 사전 변환 필요:
+
+```bash
+# hwp-toolkit으로 PDF 변환 후 업로드
+hwp convert document.hwp --to pdf -o document.pdf
 ```
 
-### 오디오 출력 형식
-- 1문서 요약: 3~5분 오디오
-- 다문서 비교: 10~15분 팟캐스트 형식 (진행자+전문가 역할)
-- 회의 브리핑: 2~3분 핵심 요약
+또는 Google Drive 업로드 후 NotebookLM에서 연결.
 
----
+## 앵커 노트북 권장 구성
 
-## 프로젝트 관리 팁
+| 노트북 | 문서 | 용도 |
+|--------|------|------|
+| rise-plans | 사업계획서, RFP, 연차보고서 | 전략 질의 |
+| rise-budget | 예산 현황, 정산 규정 | 예산 분석 |
+| rise-regulations | 운영 규정, 지침 | 규정 확인 |
+| rise-meetings | 월별 회의록 | 결정사항 추적 |
+| rise-performance | 성과지표, 자체평가 | KPI 분석 |
 
-- **주제별 분리**: 1차년도 실적 / 2차년도 계획 / RFP 분석 등 별도 프로젝트
-- **문서 최신화**: 개정된 문서는 기존 파일 대체(재업로드)
-- **질문 히스토리**: 중요한 분석 결과는 별도 MD 파일로 저장
-- **팀 공유**: 분석 결과를 복사하여 회의록이나 보고서에 활용
+## NotebookLM vs Claude Desktop Projects
+
+| 기준 | NotebookLM | Claude Projects |
+|------|-----------|----------------|
+| 소스 인용 | 정확한 출처 | 불명확 |
+| 산출물 | Studio 9종 | 텍스트/코드만 |
+| AI 모델 | Gemini | Claude |
+| 코드 생성 | 불가 | 가능 |
+| 비용 | 무료 | Pro $20/월 |
+
+**권장**: NotebookLM(팩트체크 + Studio) → Claude(초안 + 코드 + HWP 변환) 병행.
