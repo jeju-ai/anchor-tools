@@ -44,7 +44,7 @@ references/setup-checklist.md의 체크리스트를 기반으로 진행한다.
 ## 공통 필수 셋업
 
 모든 구성원:
-- [ ] 학교 이메일 계정 (`@chu.ac.kr`)
+- [ ] Google Workspace 계정 (`@jeju.ai`)
 - [ ] Slack: 앵커 워크스페이스 가입
 - [ ] Claude Code 설치 및 anchor-tools 설치
 - [ ] 보안 교육 이수 (개인정보보호, AI 활용 정책)
@@ -52,6 +52,6 @@ references/setup-checklist.md의 체크리스트를 기반으로 진행한다.
 
 ## 주요 연락처
 
-- IT 지원: it@chu.ac.kr
-- 운영지원본부: rise-admin@chu.ac.kr
-- Claude/AI 도구 문의: yj.lee@chu.ac.kr
+- IT 지원: it@jeju.ai
+- 운영지원본부: rise-admin@jeju.ai
+- Claude/AI 도구 문의: hello@jeju.ai

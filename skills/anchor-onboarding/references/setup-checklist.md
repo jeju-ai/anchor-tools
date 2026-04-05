@@ -2,10 +2,10 @@
 
 ## 1단계: 기본 계정 설정
 
-- [ ] **학교 이메일** (`@chu.ac.kr`) 발급 신청 → IT팀 (it@chu.ac.kr)
+- [ ] **Google Workspace 계정** (`@jeju.ai`) 발급 신청 → IT팀 (it@jeju.ai)
 - [ ] **GitHub 계정** 생성 또는 연결 (연구원 필수)
   - 조직 초대 요청: 담당 부서장에게 GitHub ID 전달
-- [ ] **Google Workspace** 접근 (학교 계정으로 로그인)
+- [ ] **Google Workspace** 접근 (@jeju.ai 계정으로 로그인)
 
 ---
 
@@ -86,15 +86,15 @@ curl -fsSL https://raw.githubusercontent.com/jeju-ai/anchor-tools/main/install.s
 
 | 시스템 | 담당 | 연락처 |
 |--------|------|--------|
-| 학교 ERP (예산) | 행정팀 | admin@chu.ac.kr |
-| LMS (강의) | 교학처 | lms@chu.ac.kr |
-| 연구 데이터 서버 | IT팀 | it@chu.ac.kr |
-| 사업단 내부 Wiki | 운영지원본부 | rise-admin@chu.ac.kr |
+| 학교 ERP (예산) | 행정팀 | admin@jeju.ai |
+| LMS (강의) | 교학처 | lms@jeju.ai |
+| 연구 데이터 서버 | IT팀 | it@jeju.ai |
+| 사업단 내부 Wiki | 운영지원본부 | rise-admin@jeju.ai |
 
 ---
 
 ## 완료 확인
 
-모든 단계 완료 후 운영지원본부(`rise-admin@chu.ac.kr`)에 완료 메일 발송:
+모든 단계 완료 후 운영지원본부(`rise-admin@jeju.ai`)에 완료 메일 발송:
 - 제목: `[온보딩 완료] 홍길동 / 핵심인재양성본부`
 - 내용: 셋업 완료 항목 체크리스트 첨부

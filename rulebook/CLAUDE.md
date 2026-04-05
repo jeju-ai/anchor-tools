@@ -151,4 +151,4 @@ YYMMDD-type-description-version.ext
 
 ---
 
-*최종 업데이트: 2026. 4. 5. | 관리: 이영준 부단장 (yj.lee@chu.ac.kr)*
+*최종 업데이트: 2026. 4. 5. | 관리: 이영준 부단장 (hello@jeju.ai)*

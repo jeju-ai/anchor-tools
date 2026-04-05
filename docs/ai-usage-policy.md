@@ -2,7 +2,7 @@
 
 **버전**: 1.0  
 **시행일**: 2026. 4. 5.  
-**관리**: 이영준 부단장 (CIO, yj.lee@chu.ac.kr)
+**관리**: 이영준 부단장 (CIO, hello@jeju.ai)
 
 ---
 
@@ -139,7 +139,7 @@
 
 - **온보딩 교육**: 신규 구성원 합류 시 AI 활용 정책 필수 교육
 - **정기 교육**: 연 1회 이상 AI 활용 역량 강화 워크숍
-- **문의·지원**: `#anchor-ai-help` Slack 채널 또는 yj.lee@chu.ac.kr
+- **문의·지원**: `#anchor-ai-help` Slack 채널 또는 hello@jeju.ai
 
 ---
 

@@ -4,7 +4,7 @@
 
 - **워크스페이스명**: 앵커 사업단 (Anchor Project)
 - **URL**: anchor-chu.slack.com
-- **가입**: 운영지원본부에 이메일(`rise-admin@chu.ac.kr`) 요청
+- **가입**: 운영지원본부에 이메일(`rise-admin@jeju.ai`) 요청
 
 ---
 
